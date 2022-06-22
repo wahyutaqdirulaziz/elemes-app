@@ -1,16 +1,17 @@
-# movie_app
+Build an APK
+Although app bundles are preferred over APKs, there are stores that don’t yet support app bundles. In this case, build a release APK for each target ABI (Application Binary Interface).
 
-A new Flutter project.
+If you completed the signing steps, the APK will be signed. At this point, you might consider obfuscating your Dart code to make it more difficult to reverse engineer. Obfuscating your code involves adding a couple flags to your build command.
 
-## Getting Started
+From the command line:
 
-This project is a starting point for a Flutter application.
+1 . Enter cd [project]
+2 . Run flutter build apk --split-per-abi
+(The flutter build command defaults to --release.)
+This command results in three APK files:
 
-A few resources to get you started if this is your first Flutter project:
+-[project]/build/app/outputs/apk/release/app-armeabi-v7a-release.apk
+-[project]/build/app/outputs/apk/release/app-arm64-v8a-release.apk
+-[project]/build/app/outputs/apk/release/app-x86_64-release.apk
+Removing the --split-per-abi flag results in a fat APK that contains your code compiled for all the target ABIs. Such APKs are larger in size than their split counterparts, causing the user to download native binaries that are not applicable to their device’s architecture.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
